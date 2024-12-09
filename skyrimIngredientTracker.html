@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sky Ingre Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- ========== Navbar ========== -->
+    <div class="navbar bg-dark">
+
+    </div>
+
+    <!-- ========== Body ========== -->
+    <div class="container py-5 text-center">
+        <!-- Page Intro -->
+        <div class="row pb-3">
+            <h1 class="bg-secondary-subtle rounded-top mb-0 pt-2">Skyrim Ingredient Tracker</h1>
+            <p class="bg-secondary-subtle rounded-bottom fst-italic pb-2">
+                Created by
+                <span style="font-style: normal;">Sully</span>
+                (<a href="https://github.com/CentipedeSully/IngredientTracker_Javascript/tree/main">Visit Github</a>)
+            </p>
+            <p class="pt-1 pb-3">
+                This utility is meant to help players track their alchemical progress while
+                using the
+                <a href="https://www.nexusmods.com/skyrimspecialedition/mods/20983" style="text-decoration: none;">
+                    Spell-Research Mod.
+                </a>
+            </p>
+        </div>
+
+        <!-- Import/Export Area -->
+        <form action="" id="file-form" class="mb-3">
+            <div class="py-2 mb-2 rounded container ">
+                <div class="row row-cols-md-2 row-cols-lg-3 row-cols-sm-1 row-cols-1 justify-content-center">
+                    <div class="col ">
+                        <label for="import-btn" class="form-label">
+                            Import: <input type="file" id="import-input" accept=".csv" class="form-control">
+                            <button id="import-btn" class="btn btn-outline-success btn-sm px-3 my-1"
+                                type="button">Import</button>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <p class="form-label mb-0">Export:</p>
+                        <button id="export-btn" class="btn btn-outline-secondary btn-sm px-5"
+                            type="button">Export</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+
+
+        <!-- Input & Display Row -->
+        <div class="row hover">
+            <!-- Inputs -->
+            <div class="container col-4">
+
+                <!-- Build Query context buttons -->
+                <div class="row">
+                    <h5 class="py-2">Build Query</h5>
+                    <div class="btn-group btn-group" style="display: inline;">
+                        <input type="radio" class="btn-check" name="query-context" id="search-context-btn" checked>
+                        <label for="search-context-btn" class="btn btn-outline-secondary ">Search</label>
+                        <input type="radio" class="btn-check" name="query-context" id="add-context-btn">
+                        <label for="add-context-btn" class="btn btn-outline-success ">Add</label>
+                        <input type="radio" class="btn-check" name="query-context" id="remove-context-btn">
+                        <label for="remove-context-btn" class="btn btn-outline-danger ">Remove</label>
+                    </div>
+                </div>
+
+                <!-- query form -->
+                <div class="row text-start py-3">
+                    <form action="" id="query-form">
+                        <div class="pb-3">
+                            <label class="form-label fs-5" for="ingredient-name-input">Ingredient:</label>
+                            <input id="ingredient-name-input" name="ingredientName" class="form-control query-input"
+                                type="text" placeholder="---">
+                        </div>
+
+                        <fieldset>
+                            <legend class="fs-5">Chemical Composition:</legend>
+                            <div id="chemical-entry-container"
+                                class=" p-1 border rounded overflow-scroll d-flex gap-2 flex-column"
+                                style="max-height: 250px;">
+                                <!-- Chemical Entries go here -->
+                                <!-- They are created dynamically via script-->
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <!-- Add/Remove entry buttons -->
+                <div class="row">
+                    <div class="d-flex justify-content-start pb-3 gap-1">
+                        <button id="add-chem-entry-btn" class="btn btn-outline-secondary">+</button>
+                        <button id="remove-chem-entry-btn" class="btn btn-outline-secondary">-</button>
+                    </div>
+                </div>
+
+                <!-- Clear/Submit query buttons -->
+                <div class="row">
+                    <div class="d-flex justify-content-end pb-3 gap-1 flex-wrap">
+                        <button id="clear-query-btn" class="btn btn-outline-secondary" type="button">Clear</button>
+                        <button id="submit-query-btn" class="btn btn-outline-success" type="button">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Display -->
+            <div class="col-8 ">
+                <div class="row">
+                    <h5 class="pt-2">Display</h5>
+                </div>
+                <div class="row">
+                    <p class="fst-italic">
+                        <span>Currently showing </span>
+                        <span id="current-table-population-display">0</span>
+                        <span>of</span>
+                        <span id="total-database-population-display">0</span>
+                        <span>database ingredients</span>
+                    </p>
+                </div>
+
+                <!-- Sort/Clear display buttons -->
+                <div class="row">
+                    <div class="d-flex justify-content-between pb-2 px-3 gap-1 flex-wrap">
+                        <div class="dropdown">
+                            <button id="sort-display-btn" class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                                type="button" data-bs-toggle="dropdown">
+                                Sort
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button
+                                        class="btn btn-sm btn-outline-secondary dropdown-item active">Alphabetical</button>
+                                </li>
+                                <li><button class="btn btn-sm btn-outline-secondary dropdown-item">Ascending</button>
+                                </li>
+                                <li><button class="btn btn-sm btn-outline-secondary dropdown-item">Descending</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <button id="clear-display-btn" class="btn btn-outline-danger btn-sm" type="button">Clear
+                            Display</button>
+                    </div>
+                </div>
+
+                <!-- Table display -->
+                <div class="row">
+                    <div class="border rounded p-2 ms-1 overflow-scroll" style="max-height: 400px;">
+                        <table class="table table-striped table-sm">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th class="fst-italic">Index</th>
+                                    <th>Ingredient</th>
+                                    <th>Chems</th>
+                                    <th>Qty</th>
+                                </tr>
+                            </thead>
+                            <tbody id="display-table-body" class="table-group-divider">
+                                <!-- Table entries go here! They're also built dynamically using Javascript -->
+                            </tbody>
+                            <tfoot class="table-group-divider">
+                                <tr class="table-primary">
+                                    <td>-</td>
+                                    <td>END</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Output Log -->
+                <div class="row pb-2">
+                    <div class="mt-2 ms-1 border rounded bg-light" id="log-output"
+                        style="height: 3lh; overflow: scroll;">
+                        <!-- Action logs go here -->
+                    </div>
+                    <div class="d-flex justify-content-end pt-2">
+                        <button id="clear-output-log-btn" class="btn btn-outline-danger btn-sm">Clear Log</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Directions! -->
+        <div class="row border rounded">
+            <h3 class="py-3 bg-secondary-subtle">How To Use:</h3>
+            <div class="py-2">
+                <h5 class="">Step 1: Specify a query context</h5>
+                <div class="px-5 pb-4">
+                    <p>
+                        Specify a query context from the provided contexts: <span class="fst-italic fs-5">Search,
+                            Add</span>
+                        or <span class="fst-italic fs-5">Remove</span>. The context of the query will define the
+                        application's behavior.
+                    </p>
+                    <h5 class="fst-italic">Search:</h5>
+                    <p>This context displays all relevant data based on the submitted query.
+                        An empty query results in showing all data. Specifying chemicals only
+                        results in showing all ingredients that contain all specified chemicals.
+                        Search queries are also <span class="fst-italic">implicit</span>; submitting a
+                        query with ingredient named 'a' will display all ingredients that contain 'a' in their
+                        name. Same with chemicals.</p>
+                    <p>This context does not change the data in any way.</p>
+                    <h5 class="fst-italic">Add:</h5>
+                    <p>This context adds the specified ingredient to the database if the ingredient doesn't already
+                        exist. If the ingredient already exists, then the specified ingredient is instead updated;
+                        any chemical specified that doesn't exist within the ingredient will be added, and any chemical
+                        that does exist
+                        will be overwritten.
+                    </p>
+                    <p>This context DOES change the data, but doesn't update the display. Empty entries are not allowed.
+                    </p>
+                    <h5 class="fst-italic">Remove:</h5>
+                    <p>This context removes the specified ingredient's chemcials from the database.
+                        If a 'remove' query specifies an ingredient while providing no chemical information, then that
+                        ingredient
+                        along with all of its chemicals will be removed from the database (if that ingrdient exists).
+                    </p>
+                    <p>To remove specific info regarding an ingredient's chemical composition, simply specify the target
+                        ingredient
+                        along with all of the ingredient's chemicals you wish to remove.
+                    </p>
+                    <p>This context DOES change the data, but doesn't update the display. Empty entries are not allowed.
+                    </p>
+                </div>
+                <h5 class="">Step 2: Build the query</h5>
+                <div class="px-5 pb-4">
+                    <p>
+                        Build a query by filling out all the necessary fields. Add as many chemical fields as
+                        necessary using the '+' button. The '-' button removes chemical
+                        fields. Empty chemical fields are ignored.
+                    </p>
+                    <p>
+                        Use the 'Clear' button to quickly empty the current query.
+                    </p>
+                </div>
+                <h5 class="">Step 3: Submit</h5>
+                <div class="px-5 pb-4">
+                    <p>
+                        Once the query is built, press 'Submit'. It's function depends on the current query context,
+                        but the build query's fields will persist until it is cleared.
+                    </p>
+                </div>
+                <h5 class="">Additional Features:</h5>
+                <div class="px-5 pb-4">
+                    <p>
+                        Data may be imported into or exported from the database. Simply
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
