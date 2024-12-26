@@ -22,7 +22,9 @@
 
       <!-- Profile Picture -->
       <div class="row justify-content-center my-3">
-        <img class="rounded" src="./Sully_smile_0.jpg" alt="profile-picture" style="width: 20rem; height: 25rem;">
+        <div class="">
+          <img class="rounded" src="./Sully_smile_0.jpg" alt="profile-picture" style="width: 20rem; height: 25rem;">
+        </div>
       </div>
 
       <!-- Name -->
@@ -45,13 +47,14 @@
         <!-- Links -->
         <div class="col-3 ">
           <div class="row">
-            <div class="col">
+            <div class="col-12">
               <h5 class="text-center"><small><a href="https://github.com/CentipedeSully" target="_blank">Github</a></small></h5>
             </div>
-          </div>
-          <div class="row ">
-            <div class="col">
+            <div class="col-12 d-none d-md-block">
               <h5 class="text-center"><small><a href="mailto:CentipedeSully@gmail.com" target="_top">CentipedeSully@gmail.com</a></small><h5>
+            </div>
+            <div class="col-12 d-md-none">
+              <h5 class="text-center"><small><a href="mailto:CentipedeSully@gmail.com" target="_top">Email</a></small><h5>
             </div>
           </div>
         </div>
@@ -59,11 +62,17 @@
         <!-- Buttons -->
         <div class="col-3">
           <div class="row justify-content-center">
-            <div class="col-12 btn-group mt-3" role="group">
+            <div class="col-12 d-none d-md-flex btn-group mt-3" role="group">
               <button type="button" class="btn btn-outline-secondary">All</button>
               <button type="button" class="btn btn-outline-secondary">Websites</button>
               <button type="button" class="btn btn-outline-secondary">Games</button>
               <button type="button" class="btn btn-outline-secondary">WIP</button>
+            </div>
+            <div class="col-12 d-md-none btn-group mt-3" role="group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">All</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Websites</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Games</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">WIP</button>
             </div>
           </div>
             
@@ -81,11 +90,25 @@
        <div class="row justify-content-center">
 
         <div class="website-card card mx-3 mb-3" style="width: 18rem">
-          <div class="card-header text-center btn-light"><a href="./skyrimIngredientTracker.html" target="_blank">SkyIngre Tracker</a></div>
-          <img class="card-img-top rounded" src="./skyrimLogo.png" alt="card image cap">
-          <div class="card-body bg-light">
-            <p class="card-text">A light database webApp built to help organize alchemical progress during modded skyrim play throughs.</p>
 
+          <!-- Small card view-->
+          <div class="d-md-none text-center btn-light py-3 ">
+            <a href="./skyrimIngredientTracker.html" target="_blank">
+              <img class="card-img-top rounded" src="./skyrimLogo.png" alt="card image cap">
+              <br>
+              SkyIngre Tracker
+            </a>
+          </div>
+
+          <!-- Full card view-->
+          <div class="d-none d-md-block card-header text-center btn-light">
+            <a href="./skyrimIngredientTracker.html" target="_blank">
+              SkyIngre Tracker
+            </a>
+          </div>
+          <img class="d-none d-md-block card-img-top rounded" src="./skyrimLogo.png" alt="card image cap">
+          <div class="d-none d-md-block card-body bg-light">
+            <p class="card-text text-center">A light database webApp built to help organize alchemical progress during modded skyrim play throughs.</p>
           </div>
         </div>
 
