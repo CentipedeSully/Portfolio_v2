@@ -8,6 +8,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      html{ scroll-behavior: smooth; }
+    </style>
   </head>
   <body>
     <!-- Page Content -->
@@ -22,7 +25,7 @@
 
       <!-- Profile Picture -->
       <div class="row justify-content-center my-3">
-        <div class="">
+        <div class="" id="profile">
           <img class="rounded" src="./Sully_smile_0.jpg" alt="profile-picture" style="width: 20rem; height: 25rem;">
         </div>
       </div>
@@ -117,8 +120,8 @@
 
           <!-- Small card view-->
           <div class="d-md-none text-center btn-light py-3 ">
-            <a href="" target="">
-              <img class="card-img-top rounded" src="" alt="card image cap">
+            <a href="#profile" target="">
+              <img class="card-img-top rounded mx-auto" src="./briefcaseIcon.png" alt="card image cap" style="height: 168px; width: 168px">
               <br>
               Portfolio Sully
             </a>
@@ -126,13 +129,13 @@
 
           <!-- Full card view-->
           <div class="d-none d-md-block card-header text-center btn-light">
-            <a href="" target="">
+            <a href="#profile" target="">
               Portfolio Sully
             </a>
           </div>
-          <img class="d-none d-md-block card-img-top rounded" src="" alt="card image cap">
+          <img class="d-none d-md-block card-img-top rounded mx-auto" src="./briefcaseIcon.png" alt="card image cap" style="height: 168px; width: 168px">
           <div class="d-none d-md-block card-body bg-light">
-            <p class="card-text text-center">An online space built to display developed tools.</p>
+            <p class="card-text text-center">An online space built to display developed games and tools (You're already here!).</p>
           </div>
 
         </div>
@@ -174,7 +177,7 @@
           <!-- Small card view-->
           <div class="d-md-none text-center btn-light py-3 ">
             <a href="" target="">
-              <img class="card-img-top rounded" src="" alt="card image cap">
+              <img class="card-img-top rounded mx-auto" src="./journalIcon.png" alt="card image cap"  style="height: 168px; width: 168px">
               <br>
               Exp Journal
             </a>
@@ -182,11 +185,12 @@
 
           <!-- Full card view-->
           <div class="d-none d-md-block card-header text-center btn-light">
-            <a href="./skyrimIngredientTracker.html" target="_blank">
+            <a href="" target="">
               Exp Journal
             </a>
           </div>
-          <img class="d-none d-md-block card-img-top rounded" src="" alt="card image cap">
+          <img class="d-none d-md-block card-img-top rounded mx-auto" src="./journalIcon.png" alt="card image cap" style="height: 168px; width: 168px">
+          
           <div class="d-none d-md-block card-body bg-light">
             <p class="card-text text-center">(WIP) A light journal app built to help organize entries, track dates, log hours, and recall lessons learned.</p>
           </div>
