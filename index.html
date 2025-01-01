@@ -42,7 +42,7 @@
       </div>
 
       <!--  Links & Buttons -->
-      <div>
+      <div id="btn-parent-container">
         
           <!-- stacked phone view-->
           <div class="d-md-none row justify-content-center">
@@ -59,10 +59,10 @@
             <!-- Buttons -->
             <div class="col-12 text-center">
               <div class="btn-group mt-2 " role="group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">All</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Websites</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Games</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">WIP</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary view-btn all-cards-btn">All</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary view-btn web-cards-btn">Websites</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary view-btn game-cards-btn">Games</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary view-btn wip-cards-btn">WIP</button>
               </div>
             </div>
           </div>
@@ -87,10 +87,10 @@
                 <!-- Buttons -->
                 <div class="col-6">
                   <div class="col-12 btn-group mt-3" role="group">
-                    <button type="button" class="btn btn-outline-secondary">All</button>
-                    <button type="button" class="btn btn-outline-secondary">Websites</button>
-                    <button type="button" class="btn btn-outline-secondary">Games</button>
-                    <button type="button" class="btn btn-outline-secondary">WIP</button>
+                    <button type="button" class="btn btn-outline-secondary view-btn all-cards-btn">All</button>
+                    <button type="button" class="btn btn-outline-secondary view-btn web-cards-btn">Websites</button>
+                    <button type="button" class="btn btn-outline-secondary view-btn game-cards-btn">Games</button>
+                    <button type="button" class="btn btn-outline-secondary view-btn wip-cards-btn">WIP</button>
                   </div>
                 </div>
 
@@ -106,10 +106,42 @@
         </div>
       </div>
 
-      <!-- Project Thumbnails -->
-       <div class="row justify-content-center">
 
-        <div class="website-card card mx-3 mb-3" style="width: 18rem">
+
+      <!-- Project Thumbnails -->
+       <div class="row justify-content-center" id="card-container">
+
+
+        <!-- Portfolio card -->
+        <div id="portfolio-website-card" class="project-card web-card card mx-3 mb-3" style="width: 18rem">
+
+          <!-- Small card view-->
+          <div class="d-md-none text-center btn-light py-3 ">
+            <a href="" target="">
+              <img class="card-img-top rounded" src="" alt="card image cap">
+              <br>
+              Portfolio Sully
+            </a>
+          </div>
+
+          <!-- Full card view-->
+          <div class="d-none d-md-block card-header text-center btn-light">
+            <a href="" target="">
+              Portfolio Sully
+            </a>
+          </div>
+          <img class="d-none d-md-block card-img-top rounded" src="" alt="card image cap">
+          <div class="d-none d-md-block card-body bg-light">
+            <p class="card-text text-center">An online space built to display developed tools.</p>
+          </div>
+
+        </div>
+
+
+
+
+        <!-- skyIngre Card -->
+        <div id="sky-ingre-card" class="project-card web-card card mx-3 mb-3" style="width: 18rem">
 
           <!-- Small card view-->
           <div class="d-md-none text-center btn-light py-3 ">
@@ -130,9 +162,39 @@
           <div class="d-none d-md-block card-body bg-light">
             <p class="card-text text-center">A light database webApp built to help organize alchemical progress during modded skyrim play throughs.</p>
           </div>
+
         </div>
 
+
+
+
+        <!-- expJournal Card -->
+        <div id="exp-journal-card" class="project-card web-card wip-card card mx-3 mb-3" style="width: 18rem">
+
+          <!-- Small card view-->
+          <div class="d-md-none text-center btn-light py-3 ">
+            <a href="" target="">
+              <img class="card-img-top rounded" src="" alt="card image cap">
+              <br>
+              Exp Journal
+            </a>
+          </div>
+
+          <!-- Full card view-->
+          <div class="d-none d-md-block card-header text-center btn-light">
+            <a href="./skyrimIngredientTracker.html" target="_blank">
+              Exp Journal
+            </a>
+          </div>
+          <img class="d-none d-md-block card-img-top rounded" src="" alt="card image cap">
+          <div class="d-none d-md-block card-body bg-light">
+            <p class="card-text text-center">(WIP) A light journal app built to help organize entries, track dates, log hours, and recall lessons learned.</p>
+          </div>
+          
+        </div>
        </div>
+
+
 
        <!-- Section Divider -->
       <div class="row">
@@ -156,6 +218,8 @@
 
 
     <!-- Optional JavaScript -->
+    <script src="./folioScript.js"></script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
